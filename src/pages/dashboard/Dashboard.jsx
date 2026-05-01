@@ -79,7 +79,7 @@ export const Dashboard = () => {
 
 
     const completionRate = stats?.data?.totalProjects > 0
-        ? Math.round((stats?.data?.tasksByStatus?.Done /stats?.data?.tasksByStatus?.Todo) * 100)
+        ? Math.round((stats?.data?.tasksByStatus?.Done / stats?.data?.tasksByStatus?.Todo) * 100)
         : 0;
 
     return (
@@ -94,7 +94,7 @@ export const Dashboard = () => {
                     </p>
                 </div>
 
-                {/* Numerical Stats Grid */}
+                {/* Stats Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 cursor-pointer">
                     <StatCard
                         title="Total Projects"
