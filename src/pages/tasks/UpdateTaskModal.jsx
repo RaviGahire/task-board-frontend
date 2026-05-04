@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IconX, IconPencil, IconFlag, IconAlignLeft, IconCalendar } from '@tabler/icons-react';
+import { IconX, IconPencil, IconFlag, IconAlignLeft, IconCalendar, IconSubtitlesEdit, IconStatusChange } from '@tabler/icons-react';
 import { taskService } from '../../services/taskService';
 
 export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
@@ -41,7 +41,7 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
     <div className="fixed inset-0 z-70 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative bg-white dark:bg-gray-900 w-full max-w-sm rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transform transition-all">
+      <div className="relative bg-white dark:bg-gray-900 w-full max-w-sm rounded-md shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transform transition-all">
         
         {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/30">
@@ -49,7 +49,7 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
             <IconPencil size={22} />
             <h2 className="text-xl font-black text-gray-900 dark:text-white">Edit Task</h2>
           </div>
-          <button onClick={onClose} className="p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 transition-colors">
+          <button onClick={onClose} className="p-2 cursor-pointer rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 transition-colors">
             <IconX size={20} />
           </button>
         </div>
@@ -58,12 +58,14 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Title */}
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-2">Title</label>
+            <label className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-2">
+              <IconSubtitlesEdit size={14} />
+              Title</label>
             <input
               required
               type="text"
               value={formData.title}
-              className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             />
           </div>
@@ -76,7 +78,7 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
             <textarea
               rows="3"
               value={formData.description}
-              className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             />
           </div>
@@ -84,10 +86,12 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
           {/* Status & Date Row */}
           <div className="grid grid-cols-2 gap-4">
              <div>
-                <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Status</label>
+                <label className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-gray-400 mb-2">
+                  <IconStatusChange size={14}/>
+                  Status</label>
                 <select
                     value={formData.status}
-                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                 >
                     <option value="Todo">Todo</option>
@@ -103,7 +107,7 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
                 <input 
                     type="date"
                     value={formData.dueDate}
-                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-amber-500"
                     onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
                 />
              </div>
@@ -120,7 +124,7 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
                   key={p}
                   type="button"
                   onClick={() => setFormData({ ...formData, priority: p })}
-                  className={`flex-1 py-2 rounded-xl text-xs font-bold border transition-all ${formData.priority === p
+                  className={`flex-1 py-2 cursor-pointer rounded-md text-xs font-bold border transition-all ${formData.priority === p
                     ? 'bg-amber-500 border-amber-500 text-white shadow-md shadow-amber-500/20'
                     : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-500 hover:border-amber-400'
                     }`}
@@ -135,13 +139,13 @@ export const UpdateTaskModal = ({ isOpen, onClose, onUpdate, task }) => {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-3 rounded-2xl font-bold text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex-1 px-6  py-3 cursor-pointer rounded-md font-bold text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-2xl transition-all active:scale-95 shadow-lg shadow-amber-500/20"
+              className="flex-2 bg-amber-500 cursor-pointer hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-md transition-all active:scale-95 shadow-lg shadow-amber-500/20"
             >
               Update Task
             </button>

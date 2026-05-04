@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconX, IconCircleCheck, IconFlag, IconCalendar, IconAlignLeft } from '@tabler/icons-react';
+import { IconX, IconCircleCheck, IconFlag, IconCalendar, IconAlignLeft, IconSubtitlesEdit } from '@tabler/icons-react';
 import { taskService } from '../../services/taskService';
 
 export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
@@ -44,7 +44,7 @@ export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
       console.log("onAdd", response?.data?.data)
       onClose();
       // Reset to defaults
-      setFormData({ title: '', description: '', priority: 'Medium', status: 'Pending', dueDate: '' });
+      setFormData({ title: '', description: '', priority: 'Medium', status: '', dueDate: '' });
     } catch (err) {
       console.error("Failed to create task:", err);
       alert("Error saving task. Please try again.");
@@ -57,14 +57,14 @@ export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
     <div className="fixed inset-0 z-70 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative bg-white dark:bg-gray-900 w-full max-w-md rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+      <div className="relative bg-white dark:bg-gray-900 w-full max-w-md rounded-md shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
         {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/30">
           <div className="flex items-center gap-2 text-blue-600">
             <IconCircleCheck size={22} />
             <h2 className="text-xl font-black text-gray-900 dark:text-white">Add New Task</h2>
           </div>
-          <button onClick={onClose} className="p-2 cursor-pointer rounded-xl hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 transition-colors">
+          <button onClick={onClose} className="p-2 cursor-pointer rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 transition-colors">
             <IconX size={20} />
           </button>
         </div>
@@ -72,7 +72,9 @@ export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Title */}
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Title</label>
+            <label className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-gray-400 mb-2">
+              <IconSubtitlesEdit size={14} />
+              Title</label>
             <input
               required name="title" type="text" placeholder="e.g. Design System Audit"
               value={formData.title} onChange={handleChange}
@@ -86,6 +88,7 @@ export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
             </label>
             <textarea
               name="description" placeholder="Add details..." rows="3"
+              required
               value={formData.description} onChange={handleChange}
               className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-600"
             />
@@ -98,6 +101,7 @@ export const AddTaskModal = ({ isOpen, onClose, onAdd, projectId }) => {
               </label>
               <input
                 name="dueDate" type="date"
+                required
                 value={formData.dueDate} onChange={handleChange}
                 className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md px-4 py-3 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-600"
               />

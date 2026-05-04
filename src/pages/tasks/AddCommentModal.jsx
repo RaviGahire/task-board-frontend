@@ -33,7 +33,7 @@ export const AddCommentModal = ({ isOpen, onClose, onAdd, taskId }) => {
         <div className="fixed inset-0 z-80 flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm" onClick={onClose} />
 
-            <div className="relative bg-white dark:bg-gray-900 w-full max-w-sm rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+            <div className="relative bg-white dark:bg-gray-900 w-full max-w-sm rounded-md shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/30">
                     <div className="flex items-center gap-2 text-blue-600">
                         <IconMessage size={22} />
@@ -47,7 +47,9 @@ export const AddCommentModal = ({ isOpen, onClose, onAdd, taskId }) => {
                 <form onSubmit={handleSubmit} className="p-6 space-y-4">
                     {/* Author Input */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Author</label>
+                        <label className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-gray-400 mb-2">
+                            <IconUser size={14} />
+                            Author</label>
                         <input
                             required
                             type="text"
@@ -61,7 +63,9 @@ export const AddCommentModal = ({ isOpen, onClose, onAdd, taskId }) => {
 
                     {/* Body Input */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Comment</label>
+                        <label className="flex items-center gap-1 text-xs font-black uppercase tracking-widest text-gray-400 mb-2">
+                            <IconMessage size={14} />
+                            Comment</label>
                         <textarea
                             required
                             rows="4"
@@ -77,7 +81,7 @@ export const AddCommentModal = ({ isOpen, onClose, onAdd, taskId }) => {
                     <button
                         disabled={loading}
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md transition-all active:scale-95 disabled:opacity-50"
+                        className="w-full bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-3 rounded-md transition-all active:scale-95 disabled:opacity-50"
                     >
                         {loading ? "Posting..." : "Post Comment"}
                     </button>

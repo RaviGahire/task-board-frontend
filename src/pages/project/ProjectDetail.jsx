@@ -132,18 +132,18 @@ export const ProjectDetail = () => {
                                 {/* TOP SECTION: Details + Buttons */}
                                 <div className="flex items-start justify-between gap-4">
                                     <div className="flex gap-4">
-                                        <div className={`mt-2 w-2 h-2 rounded-full shrink-0 ${task.status === 'Done' ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+                                        <div className={`mt-2 w-2 h-2 rounded-full shrink-0 ${task.status === 'Done' ? 'bg-emerald-500' : 'bg-amber-500 '}`} />
                                         <div className="flex flex-col gap-1">
-                                            <span className={`font-bold text-lg ${task.status === 'Done' ? 'text-gray-400 line-through' : 'text-gray-900 dark:text-white'}`}>
+                                            <span className={`font-bold text-lg capitalize ${task.status === 'Done' ? 'text-gray-400 line-through' : 'text-gray-900 dark:text-white'}`}>
                                                 {task.title}
                                             </span>
 
                                             <div className="flex flex-wrap gap-3 mt-1">
-                                                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 flex items-center gap-1">
-                                                    <span className="w-1 h-1 bg-gray-300 rounded-full" /> Priority: {task.priority}
+                                                <span className="text-[10px] font-black uppercase tracking-widest text-red-400 flex items-center gap-1">
+                                                    <span className="w-2 h-2 bg-red-500 rounded-full animate-ping" /> Priority: {task.priority}
                                                 </span>
                                                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-500 flex items-center gap-1">
-                                                    <span className="w-1 h-1 bg-blue-500 rounded-full" /> Due: {formatDate(task.dueDate)}
+                                                    <span className="w-2 h-2 bg-blue-500 rounded-full" /> Due: {formatDate(task.dueDate)}
                                                 </span>
                                             </div>
 
