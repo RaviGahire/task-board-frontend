@@ -155,7 +155,7 @@ export const Dashboard = () => {
                     ))}
                 </div>
                 {/* Summary Section */}
-                <div className="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-3xl border border-dashed border-gray-200 dark:border-gray-800">
+                <div className="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-md border border-dashed border-gray-200 dark:border-gray-800">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                         <div>
                             <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Project Completion</h2>
