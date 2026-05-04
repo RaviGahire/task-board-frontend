@@ -44,7 +44,7 @@ export const UpdateProjectModal = ({ isOpen, onClose, onUpdate, project }) => {
     <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative bg-white dark:bg-gray-900 w-full max-w-md rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transform transition-all">
+      <div className="relative bg-white dark:bg-gray-900 w-full max-w-md rounded-md shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transform transition-all">
 
         <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/30">
           <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
